@@ -1,0 +1,664 @@
+/* --- Root Variables & Global Styles --- */
+:root {
+  /* Updated to match the Violet/Amber theme in the HTML */
+  --color-primary: #8b5cf6;
+  /* violet-600 */
+  --color-primary-light: #a78bfa;
+  /* violet-500 */
+  --color-secondary: #fbbf24;
+  /* amber-400 */
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8fafc;
+  /* Slate-50 */
+  overflow-x: hidden;
+  /* Prevent horizontal scrolling */
+}
+
+/* Enable smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- Navigation Highlighting --- */
+/* Style for the active desktop navigation link */
+.nav-link.active {
+  color: var(--color-primary);
+  /* violet-600 */
+  font-weight: 600;
+  /* semibold */
+}
+
+/* Style for the active desktop navigation link's underline */
+.nav-link.active .nav-underline {
+  width: 100%;
+}
+
+/* Style for the active mobile navigation link */
+.nav-link-mobile.active {
+  color: var(--color-primary);
+  /* violet-600 */
+  font-weight: 700;
+  /* bold */
+  transform: scale(1.05);
+}
+
+/* --- Page Animations --- */
+
+/* Custom class for the scroll animation effect */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Floating animation for profile image */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Custom gradient background for hero */
+.gradient-bg {
+  /* This is a very-subtle background behind the blobs */
+  background: linear-gradient(135deg, #fdf2f8 0%, #f5f3ff 50%, #fdf2f8 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Blob animation */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.blob {
+  animation: blob 7s infinite;
+}
+
+.blob-1 {
+  animation-delay: 0s;
+}
+
+.blob-2 {
+  animation-delay: 2s;
+}
+
+.blob-3 {
+  animation-delay: 4s;
+}
+
+/* Pulse animation for CTA button (Updated to Violet) */
+@keyframes pulse {
+  0% {
+    /* Use the Violet-600 color */
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+/* --- Component Styles --- */
+
+/* Typewriter cursor (Updated to Violet) */
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;
+  background-color: var(--color-primary);
+  margin-left: 2px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Gradient text (Updated to Violet/Amber) */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hover effects for cards */
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Text shadow for better readability */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  /* More opaque for readability */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Custom shape dividers */
+.custom-shape-divider-bottom-1709226683 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1709226683 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 75px;
+}
+
+.custom-shape-divider-bottom-1709226683 .shape-fill {
+  fill: #FFFFFF;
+  /* Fills with white to blend into the next section */
+}
+
+/* --- NEW: Timeline Styles --- */
+.timeline-container {
+  position: relative;
+}
+
+/* The main vertical line */
+.timeline-line {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: calc(100% - 10px);
+  background-color: #f3e8ff;
+  /* violet-100 */
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 50px;
+}
+
+/* The dot on the line */
+.timeline-milestone {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-primary);
+  border: 4px solid #f3e8ff;
+  /* violet-100 */
+  border-radius: 50%;
+  z-index: 10;
+}
+
+/* Content cards */
+.timeline-content-left,
+.timeline-content-right {
+  position: relative;
+  width: calc(50% - 40px);
+  /* 50% minus some gap */
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Position cards on the left/right */
+.timeline-content-left {
+  float: left;
+  text-align: right;
+}
+
+.timeline-content-right {
+  float: right;
+  text-align: left;
+}
+
+/* Clear floats */
+.timeline-item::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* The little triangle arrows */
+.timeline-content-left::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  right: -8px;
+  /* (border-width / 2) */
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 8px solid white;
+  filter: drop-shadow(1px 0px 1px rgba(0, 0, 0, 0.05));
+}
+
+.timeline-content-right::before {
+  content: '';
+  position: absolute;
+  top: 15px;
+  left: -8px;
+  /* (border-width / 2) */
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid white;
+  filter: drop-shadow(-1px 0px 1px rgba(0, 0, 0, 0.05));
+}
+
+/* Timeline badges */
+.timeline-badge-right,
+.timeline-badge-left {
+  position: absolute;
+  top: 8px;
+  background-color: #f5f3ff;
+  /* violet-50 */
+  color: var(--color-primary);
+  /* violet-600 */
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  z-index: 5;
+}
+
+.timeline-badge-right {
+  left: calc(50% + 40px);
+}
+
+.timeline-badge-left {
+  right: calc(50% + 40px);
+}
+
+
+/* --- Contact Link (was @apply) --- */
+.contact-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9fafb;
+  /* gray-50 */
+  border-radius: 0.75rem;
+  /* rounded-xl */
+  border: 1px solid #f3f4f6;
+  /* border-gray-100 */
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+  background-color: #f5f3ff;
+  /* violet-50 */
+  border-color: #ddd6fe;
+  /* violet-300 */
+}
+
+/* === Mobile Responsiveness === */
+
+@media (max-width: 767px) {
+
+  /* Mobile Timeline */
+  .timeline-line {
+    left: 10px;
+    /* Move line to the far left */
+  }
+
+  .timeline-milestone {
+    left: 10px;
+    /* Move milestone to the far left */
+  }
+
+  .timeline-content-left,
+  .timeline-content-right {
+    width: calc(100% - 40px);
+    /* Full width minus gap */
+    float: right;
+    /* All content to the right */
+    text-align: left;
+    /* Align all text left */
+  }
+
+  .timeline-content-left::before,
+  .timeline-content-right::before {
+    /* Make all arrows point left */
+    left: -8px;
+    right: auto;
+    border-right: 8px solid white;
+    border-left: 0;
+    filter: drop-shadow(-1px 0px 1px rgba(0, 0, 0, 0.05));
+  }
+
+  .timeline-badge-left,
+  .timeline-badge-right {
+    position: relative;
+    /* Stack badges above content */
+    left: auto;
+    right: auto;
+    top: auto;
+    float: right;
+    margin-bottom: 8px;
+    margin-right: 40px;
+    /* Align with content card */
+    width: fit-content;
+  }
+
+  /* Fix home section layout for mobile */
+  .home-content {
+    text-align: center;
+    /* order: 2; is handled by Tailwind */
+  }
+
+  .home-image {
+    margin: 0 auto;
+    /* order: 1; is handled by Tailwind */
+  }
+
+  /* Stack grid items on mobile */
+  .mobile-stack {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Center align text on mobile */
+  .mobile-text-center {
+    text-align: center;
+  }
+
+  /* Reduce spacing on mobile */
+  .mobile-space-y-4>*+* {
+    margin-top: 1rem;
+  }
+
+  /* Fix heading sizes for mobile */
+  .responsive-heading {
+    font-size: 2rem !important;
+    /* 32px */
+    line-height: 2.5rem !important;
+    /* 40px */
+  }
+
+  .responsive-subheading {
+    font-size: 1.125rem !important;
+    /* 18px */
+  }
+}
+
+@media (max-width: 640px) {
+
+  /* Reduce padding for smaller screens */
+  .section-padding {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+
+  /* Further reduce heading size */
+  .responsive-heading {
+    font-size: 1.75rem !important;
+    /* 28px */
+    line-height: 2.25rem !important;
+    /* 36px */
+  }
+
+  /* Reduce profile image size */
+  .profile-image {
+    width: 200px !important;
+    height: 200px !important;
+  }
+}
+
+/* =========================================
+=== NEW STYLES FOR GALLERY AND MODAL ===
+=========================================
+*/
+
+/* --- Gallery Modal Styles --- */
+#gallery-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 100; /* Ensure it's on top */
+}
+
+#gallery-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Hides buttons when not needed */
+.gallery-hidden {
+  opacity: 0 !important;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* This is the container that moves left/right */
+#gallery-slider {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* This is the wrapper for each individual image */
+.gallery-image-container {
+  width: 100vw; /* Each image container takes full viewport width */
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4rem; /* Give space for next/prev buttons on desktop */
+  box-sizing: border-box; /* Important */
+}
+
+.gallery-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Prevents stretching */
+  max-height: 85vh; /* Max height for the image */
+  border-radius: 8px; /* Slight rounding of image corners */
+}
+
+/* --- Gallery Page Grid Styles (for gallery.html) --- */
+#gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-card {
+  position: relative;
+  border-radius: 0.75rem; /* rounded-xl */
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 250px; /* Fixed height for a uniform grid */
+}
+
+.gallery-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.gallery-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the card area */
+  transition: transform 0.3s ease;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Dark overlay on the card */
+.gallery-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
+  transition: background 0.3s ease;
+}
+
+.gallery-card:hover .gallery-card-overlay {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 70%);
+}
+
+.gallery-card-title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 1.25rem;
+  color: white;
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600; /* semibold */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+}
+
+.gallery-card:hover .gallery-card-title {
+  transform: translateY(-5px);
+}
+
+/* Gallery page header */
+.gallery-header {
+  background-color: white;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  margin-bottom: 2rem;
+}
+
+/* Prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Responsive modal image padding */
+@media (max-width: 767px) {
+  .gallery-image-container {
+      padding: 0 1rem; /* Less padding on mobile */
+  }
+}
+
+/* =========================================
+=== NEW CLICKABLE INDICATOR STYLES ===
+=========================================
+*/
+.gallery-icon-indicator {
+  position: absolute;
+  top: 1.5rem;  /* 24px */
+  right: 1.5rem; /* 24px */
+  
+  /* Badge Styles */
+  display: inline-flex;
+  align-items: center;
+  background-color: #f5f3ff; /* violet-50 */
+  color: var(--color-primary); /* violet-600 */
+  padding: 4px 10px;
+  border-radius: 9999px; /* pill shape */
+  font-size: 0.75rem; /* 12px */
+  font-weight: 600; /* semibold */
+  
+  transition: all 0.3s ease;
+  transform: scale(1);
+}
+
+/* On hover of the parent card, make the badge pop */
+[data-gallery-id]:hover .gallery-icon-indicator {
+  background-color: var(--color-primary); /* violet-600 */
+  color: #ffffff; /* white */
+  transform: scale(1.05) rotate(-2deg);
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.4);
+}
