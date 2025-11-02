@@ -116,7 +116,7 @@ sections.forEach(section => {
 */
 
 // --- CONFIGURATION ---
-const GALLERIES_PATH = "Rygina/galleries/";
+const GALLERIES_PATH = "rygina/galleries/"; // <-- THIS LINE IS FIXED
 const MANIFEST_FILE = "galleries.json";
 
 // --- DOM ELEMENTS ---
